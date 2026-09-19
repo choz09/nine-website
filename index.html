@@ -64,7 +64,7 @@
     position:relative; overflow:hidden;
     background:
       linear-gradient(180deg,rgba(20,19,17,.15) 0%,rgba(20,19,17,.55) 55%,rgba(20,19,17,.96) 100%),
-      url('img/hero-top.jpg') center 40%/cover no-repeat;
+      repeating-linear-gradient(118deg,#26241f 0 2px,#1d1b17 2px 5px);
     color:var(--paper); text-align:center;
     padding:min(16vw,132px) 32px min(11vw,100px);
     min-height:80vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -110,6 +110,7 @@
     height:220px; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px;
     font-size:12px; letter-spacing:.02em;
   }
+  .store-card .ph-img{ height:220px; width:100%; object-fit:cover; display:block; }
   .store-card .body{ padding:34px 32px 38px; flex:1; display:flex; flex-direction:column; }
   .store-card .tag{
     display:inline-flex; align-self:flex-start; align-items:center; gap:6px; font-family:"Montserrat",sans-serif;
@@ -227,7 +228,7 @@
     </div>
     <div class="grid">
       <div class="store-card mahjong reveal">
-        <div class="ph">実際の木目床・白壁の店内写真プレースホルダー</div>
+        <img class="ph-img" src="img/card-mahjong.jpg" alt="麻雀ナイン店内、木目床と白壁の様子">
         <div class="body">
           <span class="tag">3人打ち・貸卓あり</span>
           <h3>麻雀ナイン</h3>
@@ -236,7 +237,7 @@
         </div>
       </div>
       <div class="store-card poker reveal">
-        <div class="ph">実際の黒フェルト・スポット照明の写真プレースホルダー</div>
+        <img class="ph-img" src="img/card-poker.jpg" alt="POKER ROOM NINE、黒フェルトのポーカーテーブル">
         <div class="body">
           <span class="tag">現金・景品のやり取りなし</span>
           <h3>POKER ROOM NINE</h3>
