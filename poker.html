@@ -170,6 +170,8 @@
     color:var(--wood); padding:0 14px 12px; border-bottom:2px solid var(--wood);
   }
   .budget tbody td{ padding:14px; border-bottom:1px solid var(--line); color:var(--body-ink); }
+  .budget tbody td:first-child{ position:relative; }
+  .budget .label{ white-space:nowrap; }
   .budget .term-mark{
     display:inline-flex; align-items:center; justify-content:center; vertical-align:text-bottom;
     width:15px; height:15px; margin-left:4px; border-radius:50%;
@@ -243,6 +245,10 @@
 @media (max-width:480px){
   .pair{ padding-left:16px; padding-right:16px; }
   .pair .card{ padding-left:18px; padding-right:18px; }
+  .budget .term-mark{
+    position:absolute; right:2px; bottom:2px; margin-left:0;
+  }
+  .budget tbody td:first-child{ padding-right:22px; }
 }
 </style>
 </head>
@@ -319,8 +325,8 @@
     <table>
       <thead><tr><th>ゲーム</th><th>目安の合計</th></tr></thead>
       <tbody>
-        <tr><td>リングゲーム<a class="term-mark" href="#games" aria-label="リングゲームについて詳しく見る">i</a></td><td>¥3,500〜<span class="save">エントランス料 ¥1,000込み</span></td></tr>
-        <tr><td>トーナメント<a class="term-mark" href="#games" aria-label="トーナメントについて詳しく見る">i</a></td><td>¥4,000〜<span class="save">エントランス料 ¥1,000込み</span></td></tr>
+        <tr><td><span class="label">リングゲーム</span><a class="term-mark" href="#games" aria-label="リングゲームについて詳しく見る">i</a></td><td>¥3,500〜<span class="save">エントランス料 ¥1,000込み</span></td></tr>
+        <tr><td><span class="label">トーナメント</span><a class="term-mark" href="#games" aria-label="トーナメントについて詳しく見る">i</a></td><td>¥4,000〜<span class="save">エントランス料 ¥1,000込み</span></td></tr>
       </tbody>
     </table>
     <ul class="notes">
@@ -334,7 +340,7 @@
 <section class="student reveal">
   <div class="wrap">
     <div class="eyebrow">Student Discount</div>
-    <h2>学生証提示で、初回チップ半額。</h2>
+    <h2>学生証提示で、<br class="br-mobile">初回チップ半額。</h2>
     <div class="price"><span class="old">¥5,000</span><span class="arrow">→</span><span class="new">¥2,500</span></div>
     <p class="note">2回目以降、チップが0になった場合のリバイも学生特別価格(100BB ¥5,000→¥3,000)</p>
     <img class="photo-slot-img" src="img/poker-students.jpg" alt="学生年代のお客様のグループ写真" loading="lazy" style="border-radius:12px;">
@@ -348,11 +354,11 @@
     <div class="grid">
       <div class="card">
         <b>リングゲーム</b>
-        <p>好きなタイミングで参加・退席できるので、<br class="br-pc">時間を気にせず、自由に楽しめるゲーム形式。</p>
+        <p>好きなタイミングで参加・退席できるので、<br class="br-pc">時間を気にせず、自由に楽しめるゲーム<br class="br-mobile">形式。</p>
       </div>
       <div class="card">
         <b>トーナメント</b>
-        <p>参加費を払ってエントリーする勝ち抜き戦。<br class="br-mobile"><br class="br-pc">初心者の方には、毎週木曜開催の回が特におすすめ。</p>
+        <p>参加費を払ってエントリー<br class="br-mobile">する勝ち抜き戦。<br class="br-mobile"><br class="br-pc">初心者の方には、毎週木曜<br class="br-mobile">開催の回が特におすすめ。</p>
       </div>
     </div>
   </div>
@@ -362,7 +368,7 @@
   <div class="wrap">
     <div class="eyebrow">Nineの強み</div>
     <h2>本物と卓を囲める</h2>
-    <p>プロポーカープレイヤーをゲストに招いた特別イベントを、<br class="br-pc">年に数回開催しています。<br class="br-mobile"><br class="br-pc">これまで、たくさんの方にお越しいただきました。<br class="br-mobile"><br class="br-pc">本気でポーカーと向き合いたい方にも、楽しんでいただける機会です。</p>
+    <p>プロポーカープレイヤーをゲストに招いた特別イベントを、<br class="br-mobile"><br class="br-pc">年に数回開催しています。<br class="br-mobile"><br class="br-pc">これまで、たくさんの方にお越しいただきました。<br class="br-mobile"><br class="br-pc">本気でポーカーと向き合いたい方にも、楽しんでいただける機会です。</p>
     <img class="photo-slot-img" src="img/poker-guest-event.jpg" alt="プロポーカープレイヤーを招いたゲストイベントの様子" loading="lazy">
   </div>
 </section>
@@ -370,8 +376,8 @@
 <section class="sect reveal" id="events">
   <div class="wrap">
     <div class="eyebrow">Event</div>
-    <h2>毎週木曜 19:30〜「Thursday Tournament」🔰</h2>
-    <p>参加費¥1,000(19:50までの着席で初回参加費無料)。<br class="br-mobile"><br class="br-pc">初心者歓迎の定番イベントです。</p>
+    <h2>毎週木曜 19:30〜<br class="br-mobile">「Thursday Tournament」🔰</h2>
+    <p>参加費¥1,000<br class="br-mobile">(19:50までの着席で初回参加費無料)。<br class="br-mobile"><br class="br-pc">初心者歓迎の定番イベントです。</p>
     <a class="cta-link" href="poker-events.html#schedule">イベント一覧を見る →</a>
   </div>
 </section>
