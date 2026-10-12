@@ -111,7 +111,7 @@
   .stores .heading h2{ font-family:"Noto Sans JP",sans-serif; font-weight:900; font-size:clamp(22px,3vw,30px); margin:0; }
   .stores .grid{ max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
 
-  .store-card{ border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 10px 32px rgba(184,135,79,.16); }
+  .store-card{ border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 10px 32px rgba(184,135,79,.16); scroll-margin-top:90px; }
   .store-card .ph{
     height:220px; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px;
     font-size:12px; letter-spacing:.02em;
@@ -217,8 +217,8 @@
     <h1>本気で愉しむ、大人の遊び場。</h1>
     <p class="sub">麻雀もポーカーも、人と人とをつなぐゲーム。<br class="br-mobile"><br class="br-pc">だから"顔の見える"楽しさを大事にしてきました。</p>
     <div class="cta-row">
-      <a class="btn outline-dark" href="#stores">麻雀ナインを見る</a>
-      <a class="btn gold" href="#stores">POKER ROOM NINEを見る</a>
+      <a class="btn outline-dark" href="#store-mahjong">麻雀ナインを見る</a>
+      <a class="btn gold" href="#store-poker">POKER ROOM NINEを見る</a>
     </div>
     <div class="chiphint" aria-hidden="true">
       <i style="background:var(--purple)"></i><i style="background:var(--mint)"></i><i style="background:var(--gold)"></i>
@@ -244,7 +244,7 @@
       <h2>2つのお店、それぞれの楽しみ方</h2>
     </div>
     <div class="grid">
-      <div class="store-card mahjong reveal">
+      <div class="store-card mahjong reveal" id="store-mahjong">
         <img class="ph-img" src="img/card-mahjong.jpg" alt="麻雀ナイン店内、木目床と白壁の様子">
         <div class="body">
           <span class="tag">3人打ち・貸卓あり</span>
@@ -253,7 +253,7 @@
           <a class="cta" href="mahjong.html">麻雀ナインをもっと見る →</a>
         </div>
       </div>
-      <div class="store-card poker reveal">
+      <div class="store-card poker reveal" id="store-poker">
         <img class="ph-img" src="img/card-poker.jpg" alt="POKER ROOM NINE、黒フェルトのポーカーテーブル">
         <div class="body">
           <span class="tag">現金・景品のやり取りなし</span>
