@@ -59,6 +59,7 @@
   .nav .links{ display:flex; align-items:center; gap:28px; font-size:13px; letter-spacing:.01em; }
   .nav .links a{ text-decoration:none; color:var(--ink-soft); }
   .nav .links a:hover{ color:var(--paper); }
+  .links-cta-mobile{ display:none; }
   .nav .links a.active{ color:var(--gold-2); }
   .nav .cta{
     font-family:"Montserrat",sans-serif; font-weight:800; font-size:12px; letter-spacing:.03em;
@@ -95,7 +96,9 @@
       transition:max-height .3s cubic-bezier(.65,.05,.36,1);
     }
     .nav .links a{ padding:16px 32px; border-top:1px solid rgba(247,244,236,.08); }
+      .links-cta-mobile{ display:block; color:var(--gold-2); font-weight:700; }
     .nav.open .links{ max-height:320px; }
+    .nav-cta{ display:none; }
   }
 
   .btn{
@@ -199,6 +202,7 @@
       <a href="poker.html">POKER ROOM NINE</a>
       <a href="app.html">アプリ</a>
       <a href="mahjong.html#access">アクセス</a>
+      <a class="links-cta-mobile" href="#footer">お問い合わせ</a>
 
     </div>
     <button class="menu-toggle" type="button" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
