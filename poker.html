@@ -21,8 +21,10 @@
     --purple:#8478ab; --mint:#8fc7b0;
   }
   *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
   html,body{ margin:0; padding:0; line-break:strict; }
+  /* Motion Prompt #093 · MIT License (c) 2026 Shohei Ohtaki · https://showheyohtaki.github.io/motion-prompt/#093 */
+  html{ scroll-padding-top:90px; }
+  @media (prefers-reduced-motion: no-preference){ html{ scroll-behavior:smooth; } }
   body{
     background:var(--paper); color:var(--body-ink);
     font-family:"Noto Sans JP",-apple-system,"Hiragino Sans","Yu Gothic",sans-serif;
@@ -62,8 +64,38 @@
     font-family:"Montserrat",sans-serif; font-weight:800; font-size:12px; letter-spacing:.03em;
     background:var(--gold); color:#20180a; padding:9px 18px; border-radius:999px; text-decoration:none;
   }
+  /* Motion Prompt #065 · MIT License (c) 2026 Shohei Ohtaki · https://showheyohtaki.github.io/motion-prompt/#065 */
+  .menu-toggle{
+    display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px;
+    width:30px; height:30px; padding:0; border:0; background:none; cursor:pointer; flex:none; color:var(--paper);
+  }
+  .menu-toggle span{
+    display:block; width:22px; height:2px; background:currentColor; border-radius:2px;
+    transition:transform .3s cubic-bezier(.65,.05,.36,1), opacity .3s cubic-bezier(.65,.05,.36,1);
+  }
+  .nav.open .menu-toggle span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav.open .menu-toggle span:nth-child(2){ opacity:0; }
+  .nav.open .menu-toggle span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  /* Motion Prompt #085 · MIT License (c) 2026 Shohei Ohtaki · https://showheyohtaki.github.io/motion-prompt/#085 */
+  .ripple{ position:relative; overflow:hidden; }
+  .ripple-circle{
+    position:absolute; border-radius:50%; background:rgba(255,255,255,.45);
+    transform:scale(0); opacity:1; pointer-events:none;
+    animation:ripple-anim .6s cubic-bezier(.215,.61,.355,1) forwards;
+  }
+  @keyframes ripple-anim{ to{ transform:scale(1); opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ .ripple-circle{ display:none; } }
   @media (max-width:860px){
-    .nav .links{ display:none; }
+    .menu-toggle{ display:flex; }
+    .nav .links{
+      display:flex; flex-direction:column; align-items:stretch; gap:0;
+      position:absolute; top:100%; left:0; right:0; background:var(--ink2);
+      max-height:0; overflow:hidden;
+      transition:max-height .3s cubic-bezier(.65,.05,.36,1);
+    }
+    .nav .links a{ padding:16px 32px; border-top:1px solid rgba(247,244,236,.08); }
+    .nav.open .links{ max-height:320px; }
   }
 
   .btn{
@@ -270,7 +302,8 @@
       <a href="#access">アクセス</a>
 
     </div>
-    <a class="nav-cta cta" href="#footer" style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:.03em;background:var(--gold);color:#20180a;padding:9px 18px;border-radius:999px;text-decoration:none;">お問い合わせ</a>
+    <button class="menu-toggle" type="button" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="nav-cta cta ripple" href="#footer" style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:.03em;background:var(--gold);color:#20180a;padding:9px 18px;border-radius:999px;text-decoration:none;">お問い合わせ</a>
   </div>
 </nav>
 
@@ -400,8 +433,8 @@
   <div class="wrap">
     <h2>まずは、お気軽にご連絡ください。</h2>
     <div class="cta-row">
-      <a class="btn gold" href="https://lin.ee/Sbmyp0K">LINEでお問い合わせ</a>
-      <a class="btn outline-dark" href="tel:0862500724">お電話でのお問い合わせ</a>
+      <a class="btn gold ripple" href="https://lin.ee/Sbmyp0K">LINEでお問い合わせ</a>
+      <a class="btn outline-dark ripple" href="tel:0862500724">お電話でのお問い合わせ</a>
     </div>
   </div>
 </section>
@@ -439,6 +472,42 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
   }
+</script>
+<!-- Motion Prompt #065 / #085 · MIT License (c) 2026 Shohei Ohtaki · https://showheyohtaki.github.io/motion-prompt/#065 · https://showheyohtaki.github.io/motion-prompt/#085 -->
+<script>
+(function(){
+  var nav = document.querySelector('.nav');
+  var toggle = document.querySelector('.menu-toggle');
+  if(nav && toggle){
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('.links a').forEach(function(a){
+      a.addEventListener('click', function(){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+  document.querySelectorAll('.ripple').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var rect = btn.getBoundingClientRect();
+      var x = e.clientX - rect.left, y = e.clientY - rect.top;
+      var maxR = Math.max(
+        Math.hypot(x, y), Math.hypot(rect.width - x, y),
+        Math.hypot(x, rect.height - y), Math.hypot(rect.width - x, rect.height - y)
+      );
+      var circle = document.createElement('span');
+      circle.className = 'ripple-circle';
+      circle.style.width = circle.style.height = (maxR * 2) + 'px';
+      circle.style.left = (x - maxR) + 'px';
+      circle.style.top = (y - maxR) + 'px';
+      btn.appendChild(circle);
+      circle.addEventListener('animationend', function(){ circle.remove(); });
+    });
+  });
+})();
 </script>
 </body>
 </html>
