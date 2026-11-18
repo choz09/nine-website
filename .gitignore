@@ -10,3 +10,9 @@
 !mahjong-events.html
 !poker-events.html
 !sitemap.xml
+!css
+!css/**
+!js
+!js/**
+!data
+!data/**

@@ -1,0 +1,50 @@
+[
+ {
+  "order": 1,
+  "title": "WEDNESDAY RING GAME",
+  "kind": "毎週",
+  "day": "水",
+  "time": "19:00〜",
+  "price": "Buy-in：¥2,500〜",
+  "desc": "ブラインドは25/25（半分）。初心者でも安心、アドバイスもあり。",
+  "beginner": true,
+  "poster": "",
+  "show": true
+ },
+ {
+  "order": 2,
+  "title": "THURSDAY TOURNAMENT",
+  "kind": "毎週",
+  "day": "木",
+  "time": "19:30/21:20",
+  "price": "Buy-in：¥1,000",
+  "desc": "19:50までの着席で1stエントリー無料。初心者でも安心、アドバイスもあり。",
+  "beginner": true,
+  "poster": "",
+  "show": true
+ },
+ {
+  "order": 3,
+  "title": "NINE PARTY QUEST",
+  "kind": "月間イベント(11月)",
+  "day": "毎日",
+  "time": "",
+  "price": "",
+  "desc": "(要入力：内容・ミッションの案内)",
+  "beginner": false,
+  "poster": "",
+  "show": true
+ },
+ {
+  "order": 4,
+  "title": "Weekly Mission",
+  "kind": "毎週",
+  "day": "毎日",
+  "time": "",
+  "price": "",
+  "desc": "♠NORMAL ♥HARD ♦SPECIAL ♣SECRET の4種類。(要入力：案内文)",
+  "beginner": false,
+  "poster": "",
+  "show": true
+ }
+]

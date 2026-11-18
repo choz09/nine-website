@@ -1,0 +1,86 @@
+[
+ {
+  "date": "2026-11-16",
+  "title": "RING GAME",
+  "category": "リングゲーム",
+  "start": "18:00",
+  "late": "",
+  "d1": "Buy-in：¥2,500〜 いつでも参加OK",
+  "d2": "退席も自由 自分のペースで",
+  "desc": "ミッションクリアで特典も",
+  "poster": "",
+  "show": true
+ },
+ {
+  "date": "2026-11-17",
+  "title": "XPT SATELLITE (1/3)",
+  "category": "サテライト",
+  "start": "19:30",
+  "late": "21:40",
+  "d1": "Buy-in：¥5,000 STACK：30,000",
+  "d2": "",
+  "desc": "スタックを90,000点▶XPTチケット1枚 180,000点▶XPTチケット2枚",
+  "poster": "",
+  "show": true
+ },
+ {
+  "date": "2026-11-18",
+  "title": "WEDNESDAY RING GAME",
+  "category": "初心者向け",
+  "start": "19:00",
+  "late": "",
+  "d1": "Buy-in：¥2,500〜",
+  "d2": "ブラインドは25/25（半分）",
+  "desc": "初心者でも安心。アドバイスもあり。",
+  "poster": "",
+  "show": true
+ },
+ {
+  "date": "2026-11-19",
+  "title": "THURSDAY TOURNAMENT",
+  "category": "初心者向け",
+  "start": "19:30",
+  "late": "21:20",
+  "d1": "Buy-in：¥1,000",
+  "d2": "19:50までの着席で1stエントリー無料",
+  "desc": "初心者でも安心。アドバイスもあり。",
+  "poster": "",
+  "show": true
+ },
+ {
+  "date": "2026-11-20",
+  "title": "XPT SATELLITE (1/3)",
+  "category": "サテライト",
+  "start": "19:30",
+  "late": "21:40",
+  "d1": "Buy-in：¥5,000 STACK：30,000",
+  "d2": "",
+  "desc": "スタックを90,000点▶XPTチケット1枚 180,000点▶XPTチケット2枚",
+  "poster": "",
+  "show": true
+ },
+ {
+  "date": "2026-11-21",
+  "title": "XPT 店舗DAY1",
+  "category": "トロフィー",
+  "start": "14:00",
+  "late": "18:30",
+  "d1": "",
+  "d2": "",
+  "desc": "来週から開催されるXPT。会場より一足先にDay2進出を決めよう！",
+  "poster": "",
+  "show": true
+ },
+ {
+  "date": "2026-11-22",
+  "title": "NINE JAPAN TOUR",
+  "category": "スペシャル",
+  "start": "19:00",
+  "late": "21:30",
+  "d1": "",
+  "d2": "",
+  "desc": "毎月“主役県”を決めて行うトーナメント。その県の特産品がプライズになります。（今月は山梨県）",
+  "poster": "",
+  "show": true
+ }
+]

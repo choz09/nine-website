@@ -341,6 +341,7 @@
  "@context": "https://schema.org"
 }
 </script>
+<link rel="stylesheet" href="css/events.css">
 </head>
 <body>
 
@@ -378,6 +379,8 @@
     </div>
   </div>
 </header>
+
+<section class="today-strip" id="today-strip" aria-label="今日のイベント" hidden></section>
 
 <section class="trust reveal">
   <div class="wrap">
@@ -456,6 +459,15 @@
   </div>
 </section>
 
+<section class="ev-sect alt reveal" id="beginner">
+  <div class="wrap">
+    <div class="eyebrow">For Beginners</div>
+    <h2>初めてなら、この2つ。</h2>
+    <p class="ev-lead">毎週開いている、初心者向けの定番です。<br>経験がなくても、わからないことはその場で聞けます。<br>見学がてらの来店も、歓迎です。</p>
+    <div class="ev-cards" id="beginner-cards"></div>
+  </div>
+</section>
+
 <section class="sect alt reveal">
   <div class="wrap">
     <div class="eyebrow">Nineの強み</div>
@@ -465,11 +477,33 @@
   </div>
 </section>
 
-<section class="sect reveal" id="events">
+<section class="ev-sect reveal" id="rank">
   <div class="wrap">
-    <div class="eyebrow">Event</div>
-    <h2>毎週木曜 19:30〜<br class="br-mobile">「Thursday Tournament」🔰</h2>
-    <p>参加費¥1,000<br class="br-mobile">(19:50までの着席で<br class="br-mobile">初回参加費無料)。<br class="br-mobile"><br class="br-pc">初心者歓迎の定番イベントです。</p>
+    <div class="eyebrow">Rank</div>
+    <h2>来店が、ランクになる。</h2>
+    <p class="ev-lead">月の来店回数で、ランクが決まります。<br>獲得した翌月の1か月間、アプリのカードに表示。<br>バッジのほか、ポイントのプレゼントもあります。</p>
+    <div class="rank-grid">
+      <div class="rank-card"><b>ROOKIE</b><span class="cond">月1〜2回</span><p>まずは、ここから。</p></div>
+      <div class="rank-card"><b>REGULAR</b><span class="cond">月3〜6回</span><p>すっかり、おなじみ。</p></div>
+      <div class="rank-card"><b>STAR</b><span class="cond">月7回以上</span><p>月7回以上。店の主役。</p></div>
+      <div class="rank-card mvp"><b>MVP</b><span class="cond">STARの中から毎月1人</span><p>STARの中から、毎月ただ1人。</p></div>
+    </div>
+    <div class="rank-streak">
+      <p>続けて通うと、特別なバッジも。</p>
+      <ul><li>IRON 7日連続</li><li>TITAN 14日連続</li><li>LEGEND 年末に、最長連続の1人</li></ul>
+    </div>
+    <p class="rank-close">通うほど、称号があがる。どこまで目指せる?</p>
+    <p class="ev-note">チップの現金化・景品交換は一切ありません。</p>
+  </div>
+</section>
+
+<section class="ev-sect reveal" id="events">
+  <div class="wrap">
+    <div class="eyebrow">Ring Game</div>
+    <h2>リングゲームの、お楽しみ。</h2>
+    <p class="ev-lead">リングゲームに、ひとつ目的を。<br>みんなで挑戦するイベントを開催中です。</p>
+    <div class="ev-cards" id="fixed-cards"></div>
+    <p class="ev-note">チップの現金化・景品交換は一切ありません。</p>
     <a class="cta-link" href="poker-events.html#schedule">イベント一覧を見る →</a>
   </div>
 </section>
@@ -568,5 +602,7 @@
   });
 })();
 </script>
+<div class="today-bar" id="today-bar" hidden></div>
+<script src="js/events.js" defer></script>
 </body>
 </html>

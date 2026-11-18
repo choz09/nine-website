@@ -1,0 +1,120 @@
+/* イベント関連の共通パーツ(今日の帯・固定帯・カード・詳細画面・今週のリスト・ランク) */
+/* 色や書体は各ページの :root と同じ変数を使う(--ink --gold --gold-2 --paper --paper2 --wood --line ほか) */
+
+/* ---------- 今日のイベント帯(ヒーロー直下) ---------- */
+.today-strip{ background:var(--ink3); color:var(--paper); border-bottom:1px solid rgba(201,161,92,.35); }
+.today-strip[hidden]{ display:none; }
+.today-strip .wrap{ display:flex; align-items:center; gap:20px 28px; flex-wrap:wrap; justify-content:center; padding-top:18px; padding-bottom:18px; text-align:left; }
+.today-strip .ts-label{ font-family:"Montserrat",sans-serif; font-weight:800; font-size:12px; letter-spacing:.18em; color:var(--gold-2); white-space:nowrap; }
+.today-strip .ts-body{ display:flex; flex-direction:column; gap:10px; min-width:0; }
+.today-strip .ts-row{ display:flex; flex-direction:column; gap:2px; }
+.today-strip .ts-row b{ font-size:clamp(16px,2.2vw,20px); font-weight:900; line-height:1.5; }
+.today-strip .ts-row span{ font-size:13px; color:var(--ink-soft); line-height:1.7; }
+.today-strip .ts-link{ font-family:"Montserrat",sans-serif; font-weight:800; font-size:13px; color:var(--gold-2); text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:3px; white-space:nowrap; }
+@media (max-width:640px){
+  .today-strip .wrap{ flex-direction:column; align-items:flex-start; padding-left:max(20px,env(safe-area-inset-left,0px)); padding-right:max(20px,env(safe-area-inset-right,0px)); }
+}
+
+/* ---------- 画面下の固定帯 ---------- */
+.today-bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:18;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  background:rgba(20,19,17,.96); color:var(--paper); border-top:1px solid rgba(201,161,92,.45);
+  font-size:13px; line-height:1.5;
+}
+.today-bar[hidden]{ display:none; }
+.today-bar .tb-text{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.today-bar .tb-text b{ color:var(--gold-2); font-weight:800; margin-right:.4em; }
+.today-bar .tb-btn{
+  flex:none; font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:800; font-size:12.5px; text-decoration:none;
+  background:linear-gradient(140deg,var(--gold-2),var(--gold)); color:#20180a; padding:9px 16px; border-radius:999px;
+}
+body.has-today-bar{ padding-bottom:calc(58px + env(safe-area-inset-bottom,0px)); }
+
+/* ---------- 見出しセクション(ページ共通) ---------- */
+.ev-sect{ padding:min(11vw,88px) 32px; text-align:center; border-bottom:1px solid var(--line); }
+.ev-sect.alt{ background:var(--paper2); }
+.ev-sect .wrap{ padding:0; }
+.ev-sect .eyebrow{ font-family:"Montserrat",sans-serif; font-weight:700; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--wood); margin-bottom:16px; }
+.ev-sect h2{ font-family:"Noto Sans JP",sans-serif; font-weight:900; font-size:clamp(21px,2.8vw,28px); margin:0 0 20px; line-height:1.5; }
+.ev-sect p.ev-lead{ font-size:16px; line-height:2; color:var(--body-ink); margin:0 auto; }
+.ev-sect .cta-link{ display:inline-flex; margin-top:26px; font-family:"Montserrat",sans-serif; font-weight:800; font-size:13px; color:#7a5a26; text-decoration:none; border-bottom:1px solid var(--wood); padding-bottom:3px; }
+
+/* ---------- イベントカード(初心者おすすめ・リングゲームのお楽しみ) ---------- */
+.ev-lead{ max-width:34em; margin:0 auto; }
+.ev-cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:20px; max-width:860px; margin:32px auto 0; text-align:left; }
+.ev-card{
+  all:unset; box-sizing:border-box; cursor:pointer; display:flex; flex-direction:column; gap:10px;
+  background:#fff; border:1px solid var(--line); border-radius:16px; padding:24px 22px 20px; color:var(--body-ink);
+}
+.ev-card:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+.ev-card .tag{ align-self:flex-start; font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:800; font-size:11px; letter-spacing:.08em; background:var(--gold); color:#20180a; padding:3px 12px; border-radius:999px; }
+.ev-card h3{ font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:900; font-size:19px; line-height:1.35; margin:0; }
+.ev-card .meta{ font-size:12.5px; color:var(--body-muted); line-height:1.8; margin:0; }
+.ev-card .line{ font-size:15px; line-height:1.9; margin:0; }
+.ev-card .more{ margin-top:auto; font-family:"Montserrat",sans-serif; font-weight:800; font-size:12px; color:#7a5a26; }
+.ev-note{ max-width:34em; margin:24px auto 0; font-size:12.5px; color:var(--body-muted); line-height:1.9; }
+.ev-sub{ font-family:"Montserrat",sans-serif; font-weight:700; font-size:12px; letter-spacing:.14em; color:var(--wood); margin:36px 0 0; }
+
+/* ---------- 詳細画面 ---------- */
+dialog.ev-modal{ border:none; padding:0; border-radius:18px; width:min(560px,calc(100% - 32px)); max-height:calc(100% - 32px); background:var(--paper); color:var(--body-ink); }
+dialog.ev-modal::backdrop{ background:rgba(10,9,8,.72); }
+.ev-modal .em-inner{ padding:26px 24px 24px; display:flex; flex-direction:column; gap:14px; }
+.ev-modal .em-head{ font-family:"Montserrat",sans-serif; font-weight:700; font-size:11px; letter-spacing:.16em; color:var(--wood); margin:0; }
+.ev-modal h3{ font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:900; font-size:22px; line-height:1.35; margin:0; }
+.ev-modal .em-meta{ font-size:13px; color:var(--body-muted); line-height:1.9; margin:0; }
+.ev-modal .em-desc{ font-size:15px; line-height:1.95; margin:0; }
+.ev-modal .em-list{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px; font-size:14px; line-height:1.7; }
+.ev-modal .em-list b{ font-family:"Montserrat",sans-serif; font-weight:800; margin-right:.5em; }
+.ev-modal .em-posters{ display:flex; flex-direction:column; gap:12px; }
+.ev-modal .em-posters img{ display:block; width:100%; height:auto; border-radius:12px; }
+.ev-modal .em-video{ position:relative; }
+.ev-modal .em-video video{ display:block; width:100%; height:auto; border-radius:12px; background:#000; }
+.ev-modal .em-play{
+  all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
+  font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:800; font-size:14px; padding:14px 18px; border-radius:999px;
+  border:2px solid var(--gold); color:var(--body-ink);
+}
+.ev-modal .em-play:focus-visible, .ev-modal .em-close:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+.ev-modal .em-note{ font-size:12px; color:var(--body-muted); line-height:1.9; margin:0; }
+.ev-modal .em-close{
+  all:unset; box-sizing:border-box; cursor:pointer; align-self:stretch; text-align:center; font-weight:800; font-size:14px;
+  padding:13px 18px; border-radius:999px; background:var(--ink); color:var(--paper);
+}
+body.ev-lock{ overflow:hidden; }
+
+/* ---------- 今週のリスト ---------- */
+.week-range{ font-family:"Montserrat",sans-serif; font-weight:800; font-size:15px; letter-spacing:.06em; color:var(--gold-2); margin:0 0 20px; }
+.week-list{ max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:10px; text-align:left; }
+.week-day{
+  all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; gap:16px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(201,161,92,.28); border-radius:14px; padding:14px 18px; color:var(--paper);
+}
+.week-day:focus-visible{ outline:2px solid var(--gold-2); outline-offset:3px; }
+.week-day.today{ border-color:var(--gold-2); background:rgba(201,161,92,.16); }
+.week-day .wd-date{ flex:none; width:3.6em; text-align:center; font-family:"Montserrat",sans-serif; font-weight:900; line-height:1.15; }
+.week-day .wd-date b{ display:block; font-size:24px; }
+.week-day .wd-date span{ font-size:11px; letter-spacing:.1em; color:var(--gold-2); }
+.week-day .wd-body{ min-width:0; display:flex; flex-direction:column; gap:2px; }
+.week-day .wd-title{ font-weight:900; font-size:16px; line-height:1.5; }
+.week-day .wd-sub{ font-size:12.5px; color:var(--ink-soft); line-height:1.7; }
+.week-day .wd-badge{ margin-left:auto; flex:none; font-size:10.5px; font-weight:800; letter-spacing:.06em; background:var(--gold); color:#20180a; border-radius:999px; padding:2px 10px; }
+.poster-fold{ max-width:760px; margin:26px auto 0; text-align:left; color:var(--ink-soft); }
+.poster-fold summary{ cursor:pointer; font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:800; font-size:13px; color:var(--gold-2); }
+.poster-fold img{ display:block; width:100%; height:auto; margin-top:14px; border-radius:14px; border:1px solid rgba(201,161,92,.25); }
+
+/* ---------- ランク ---------- */
+.rank-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; max-width:980px; margin:32px auto 0; text-align:left; }
+.rank-card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 18px; display:flex; flex-direction:column; gap:6px; }
+.rank-card b{ font-family:"Montserrat",sans-serif; font-weight:900; font-size:18px; letter-spacing:.04em; }
+.rank-card .cond{ font-size:12px; color:var(--body-muted); }
+.rank-card p{ font-size:14px; line-height:1.8; margin:4px 0 0; }
+.rank-card.mvp{ background:var(--ink); color:var(--paper); border-color:var(--gold); }
+.rank-card.mvp .cond{ color:var(--gold-2); }
+.rank-streak{ max-width:34em; margin:28px auto 0; text-align:center; }
+.rank-streak p{ font-size:15px; line-height:2; }
+.rank-streak ul{ list-style:none; margin:10px 0 0; padding:0; font-size:14px; line-height:2; color:var(--body-muted); }
+.rank-close{ font-weight:900; font-size:17px; margin:30px 0 0; }
+@media (max-width:860px){ .rank-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:420px){ .rank-grid{ grid-template-columns:minmax(0,1fr); } }
