@@ -126,3 +126,9 @@ body.ev-lock{ overflow:hidden; }
 .rank-close{ font-weight:900; font-size:17px; margin:30px 0 0; }
 @media (max-width:860px){ .rank-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:420px){ .rank-grid{ grid-template-columns:minmax(0,1fr); } }
+
+/* ---------- 麻雀ナイン: 企画の帯・固定帯の予約ボタン ---------- */
+.today-strip button.ts-link{ background:none; border:0; border-bottom:1px solid var(--gold); padding:0 0 3px; cursor:pointer; }
+.today-bar .tb-btns{ flex:none; display:flex; gap:8px; }
+.today-bar .tb-btn-sub{ background:none; border:1px solid var(--gold-2); color:var(--gold-2); padding:8px 14px; }
+@media (max-width:420px){ .today-bar .tb-btn, .today-bar .tb-btn-sub{ padding:9px 11px; font-size:12px; } .today-bar .tb-btn-sub{ padding:8px 10px; } }
