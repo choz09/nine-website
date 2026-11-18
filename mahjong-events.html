@@ -198,6 +198,7 @@
   .br-mobile{ display:inline; }
 }
 </style>
+<link rel="stylesheet" href="css/events.css">
 </head>
 <body>
 
@@ -251,14 +252,16 @@
     </div>
     <div class="grid" style="margin-top:24px;">
       <div class="card">
-        <span class="tag" style="background:var(--wood);">月・水限定</span>
-        <h2>金牌ルール</h2>
-        <p style="margin-bottom:0;">毎週月曜・水曜は、<br class="br-mobile">金牌ルールを採用しています。<br class="br-mobile"><br class="br-pc">詳しくは、<br class="br-mobile">スタッフまでお気軽にお尋ねください。</p>
+        <span class="tag">固定イベント</span>
+        <h2>NINE STEP UP<br class="br-mobile">CHALLENGE</h2>
+        <p style="margin-bottom:0;">みんなで打って、みんなでクーポン！<br>1週間のフリーの半荘数を、お店全体で数えます。<br>80半荘・100半荘を超えると、<br class="br-mobile">みなさんにクーポンをお渡しします。</p>
+        <button type="button" class="ev-open" data-ev="stepup">タップして詳細 →</button>
       </div>
       <div class="card">
         <span class="tag" style="background:var(--wood);">今月のイベント</span>
-        <h2>一発ツモイベント</h2>
-        <p style="margin-bottom:0;">毎日指定した3枚のいずれかを、<br class="br-mobile"><br class="br-pc">最初にリーチ一発ツモで<br class="br-mobile">アガった方に特典を<br class="br-mobile"><br class="br-pc">ご用意しています。</p>
+        <h2>NINE BINGO 延長戦</h2>
+        <p style="margin-bottom:0;">4×4のマスを埋めていく、ビンゴ企画です。<br>1列そろうごとに、<br class="br-mobile">1,000円分のクーポンをその場で進呈。<br>全マスクリアで、<br class="br-mobile">12月は毎日3ゲーム無料です。</p>
+        <button type="button" class="ev-open" data-ev="bingo">タップして詳細 →</button>
       </div>
     </div>
   </div>
@@ -350,6 +353,38 @@
       btn.appendChild(circle);
       circle.addEventListener('animationend', function(){ circle.remove(); });
     });
+  });
+})();
+</script>
+<script src="js/events.js" defer></script>
+<script>
+(function(){
+  var D = {
+    stepup: {
+      title: 'NINE STEP UP CHALLENGE',
+      meta: '11/16(月)スタート / 毎週',
+      lines: ['みんなで打って、みんなでクーポン！', '月曜から日曜までの1週間、フリーの半荘数をお店全体で数えます。'],
+      missions: [
+        ['STEP1', '週の半荘数が80〜99 → その週に20半荘以上打った方に、500円クーポン(週明けに配布)'],
+        ['STEP2', '週の半荘数が100以上 → 100半荘に到達した時に着席している皆さんに、1,500円クーポン'],
+        ['STEP2', '週明けに、その週に打った全員へ、半荘数に応じたクーポン(1〜9半荘 300円 / 10〜19 500円 / 20〜29 1,000円 / 30〜39 1,500円 / 40以上 2,000円)']
+      ],
+      notes: ['個人のクーポンは、その週に到達した段の分のみです(重ねての付与はありません)', 'クーポンの有効期限は、配布から1週間です', 'クーポンはゲーム代にご利用いただけます', '内容・金額は、状況により変更する場合があります'],
+      posters: ['img/events/step-up-challenge.jpg']
+    },
+    bingo: {
+      title: 'NINE BINGO 延長戦',
+      meta: '〜11/30',
+      lines: ['4×4のビンゴカードのマスを、条件を達成して埋めていきます。', '1列そろったら、スタッフにお声がけください。クーポン1,000円分をアプリでその場で付与します。', '全マスクリアで、12月は毎日3ゲーム無料です。'],
+      notes: ['クーポンはゲーム代にご利用いただけます', '内容は状況により変更する場合があります'],
+      posters: ['img/events/nine-bingo.jpg']
+    }
+  };
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('[data-ev]');
+    if(!b || !window.NineEvents) return;
+    var d = D[b.getAttribute('data-ev')];
+    if(d) window.NineEvents.openDetail(d);
   });
 })();
 </script>

@@ -223,8 +223,9 @@
     (d.lines || []).forEach(function(t){ if(t) h += '<p class="em-desc">' + esc(t) + '</p>'; });
     if(d.missions){
       h += '<ul class="em-list">' + d.missions.map(function(m){ return '<li><b>' + esc(m[0]) + '</b>' + esc(m[1]) + '</li>'; }).join('') + '</ul>';
-      if(COPY.missionNote) h += '<p class="em-note">' + esc(COPY.missionNote) + '</p>';
+      if(d.missionNote) h += '<p class="em-note">' + esc(d.missionNote) + '</p>';
     }
+    (d.notes || []).forEach(function(t){ h += '<p class="em-note">' + esc(t) + '</p>'; });
     if(d.video) h += '<div class="em-video"><button type="button" class="em-play" data-src="' + esc(d.video.src) + '" data-poster="' + esc(d.video.poster) + '">' + esc(COPY.playVideo) + '</button></div>';
     if(d.posters && d.posters.length) h += '<div class="em-posters">' + d.posters.map(function(p){ return '<img src="' + esc(p) + '" alt="' + esc(d.title) + 'の告知画像" loading="lazy">'; }).join('') + '</div>';
     if(d.noCash) h += '<p class="em-note">' + esc(COPY.noCash) + '</p>';
@@ -246,7 +247,7 @@
     var m = media(f.title), lines = COPY.details[key(f.title)] || [f.desc];
     var meta = fixedMeta(f);
     var posters = f.poster ? f.poster.split(/[,、]\s*/).map(function(p){ return 'img/events/' + p; }) : (m && m.posters) || [];
-    return { title: shown(f.title), meta: meta, lines: lines, missions: COPY.missions[key(f.title)], video: m && m.video, posters: posters, noCash: key(f.title) === 'WEEKLY MISSION' };
+    return { title: shown(f.title), meta: meta, lines: lines, missions: COPY.missions[key(f.title)], missionNote: COPY.missions[key(f.title)] ? COPY.missionNote : '', video: m && m.video, posters: posters, noCash: key(f.title) === 'WEEKLY MISSION' };
   }
   function detailForEvent(e){
     var m = media(e.title);
@@ -318,8 +319,12 @@
     });
   }
 
+  /* 他のページ(麻雀ナインのイベント等)からも詳細画面を開けるようにする */
+  window.NineEvents = { openDetail: openDetail };
+
   /* ---------- 起動 ---------- */
   function start(){
+    if(!$('today-strip') && !$('today-bar') && !$('week-list') && !$('beginner-cards') && !$('fixed-cards')) return;
     Promise.all([load('schedule', fromScheduleCsv), load('fixed', fromFixedCsv)]).then(function(r){
       var schedule = r[0], fixed = r[1].filter(function(f){ return f.show !== false; });
       renderToday(schedule);
