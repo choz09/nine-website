@@ -5,7 +5,10 @@
   'use strict';
 
   var CONFIG = {
-    sheetCsv: { schedule: '', fixed: '' },
+    sheetCsv: {
+      schedule: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT9JFNQwUKRWS21LipW-sh9YYxvAjSnWXIIK5WaTAh8iLof07dq7K58sQTzyZwLAN68EKFMGRnFcWBV/pub?gid=351920975&single=true&output=csv',
+      fixed: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT9JFNQwUKRWS21LipW-sh9YYxvAjSnWXIIK5WaTAh8iLof07dq7K58sQTzyZwLAN68EKFMGRnFcWBV/pub?gid=1684706056&single=true&output=csv'
+    },
     fallback: { schedule: 'data/schedule.json', fixed: 'data/fixed.json' },
     line: 'https://line.me/R/ti/p/@711rgefx',
     eventsPage: 'poker-events.html#schedule',
@@ -38,7 +41,7 @@
     beginnerBadge: '初心者向け',
     noCash: 'チップの現金化・景品交換は一切ありません。',
     cards: {
-      'WEDNESDAY RING GAME': '参加費¥2,500〜。はじめの一卓に、ちょうどいい。',
+      'WEDNESDAY RING GAME': '通常より、気軽に座れる一卓。',
       'THURSDAY TOURNAMENT': '19:50までの着席で、1回目の参加は無料。',
       'NINE PARTY QUEST': 'みんなで協力して、9つのミッションに挑戦。',
       'WEEKLY MISSION': 'ミッションをクリアして、チケットを集めよう。'
@@ -253,7 +256,8 @@
   function fixedMeta(f){
     var a = [], t = String(f.time || '');
     if(t.indexOf('/') > -1) t = t.split('/')[0] + 'スタート';
-    if(f.day && f.day !== '毎日') a.push('毎週' + f.day + '曜 ' + t);
+    var freq = /隔週/.test(f.kind) ? '隔週' : '毎週';
+    if(f.day && f.day !== '毎日') a.push(freq + f.day + '曜 ' + t);
     if(f.price) a.push(f.price.replace(/^Buy-in：/, '参加費 '));
     return a.join(' / ');
   }
