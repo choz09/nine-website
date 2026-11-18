@@ -24,8 +24,11 @@
   font-size:13px; line-height:1.5;
 }
 .today-bar[hidden]{ display:none; }
-.today-bar .tb-text{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.today-bar .tb-text b{ color:var(--gold-2); font-weight:800; margin-right:.4em; }
+.today-bar .tb-text{ all:unset; box-sizing:border-box; flex:1; min-width:0; cursor:pointer; display:flex; align-items:center; gap:8px; color:var(--paper); font-size:13px; line-height:1.5; }
+.today-bar .tb-text:focus-visible{ outline:2px solid var(--gold-2); outline-offset:2px; }
+.today-bar .tb-line{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.today-bar .tb-line b{ color:var(--gold-2); font-weight:800; margin-right:.4em; }
+.today-bar .tb-chev{ flex:none; color:var(--gold-2); font-size:20px; line-height:1; }
 .today-bar .tb-btn{
   flex:none; font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:800; font-size:12.5px; text-decoration:none;
   background:linear-gradient(140deg,var(--gold-2),var(--gold)); color:#20180a; padding:9px 16px; border-radius:999px;

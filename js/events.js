@@ -167,13 +167,16 @@
     var strip = $('today-strip'), bar = $('today-bar');
     var b = businessDate(), id = iso(b.y, b.m, b.d), st = dayState(eventsOn(schedule, id));
     var label = COPY.todayLabel + ' ' + b.m + '/' + b.d + '(' + WEEK.charAt(b.w) + ')';
-    var html = '', barText = '';
+    var html = '', barText = '', barOpen = null;
+    var todayMeta = b.m + '/' + b.d + '(' + WEEK.charAt(b.w) + ')';
     if(st.type === 'closed'){
       html = '<div class="ts-row"><b>' + esc(COPY.closedTitle) + '</b><span>' + esc(COPY.closedSub) + '</span></div>';
       barText = COPY.barClosed;
+      barOpen = function(){ openDetail({ title: COPY.barClosed, meta: todayMeta, lines: [COPY.closedTitle, COPY.closedSub] }); };
     } else if(st.type === 'ring'){
       html = '<div class="ts-row"><b>' + esc(COPY.ringTitle) + '</b><span>' + esc(COPY.ringSub) + '</span></div>';
       barText = COPY.barRing;
+      barOpen = function(){ openDetail({ title: COPY.ringDay, meta: todayMeta, lines: [COPY.ringTitle, COPY.ringSub] }); };
     } else {
       st.events.forEach(function(e){
         var sub = e.start ? e.start + COPY.startSuffix : (e.desc || '');
@@ -181,13 +184,15 @@
         html += '<div class="ts-row"><b>' + esc((isEvening(e) ? COPY.evening : COPY.daytime) + shown(e.title) + '。') + '</b>' + (sub ? '<span>' + esc(sub) + '</span>' : '') + '</div>';
       });
       barText = shown(st.events[0].title) + (startText(st.events[0]) ? ' ' + startText(st.events[0]) : '');
+      barOpen = function(){ openDetail(detailForEvent(st.events[0])); };
     }
     if(strip){
       strip.innerHTML = '<div class="wrap"><div class="ts-label">' + esc(label) + '</div><div class="ts-body">' + html + '</div><a class="ts-link" href="' + CONFIG.eventsPage + '">' + esc(COPY.linkMore) + '</a></div>';
       strip.hidden = false;
     }
     if(bar){
-      bar.innerHTML = '<div class="tb-text"><b>' + esc(COPY.barLabel) + '</b>' + esc(barText) + '</div><a class="tb-btn" href="' + CONFIG.line + '">' + esc(COPY.barButton) + '</a>';
+      bar.innerHTML = '<button type="button" class="tb-text" aria-label="今日のイベントの詳細を開く"><span class="tb-line"><b>' + esc(COPY.barLabel) + '</b>' + esc(barText) + '</span><span class="tb-chev" aria-hidden="true">›</span></button><a class="tb-btn" href="' + CONFIG.line + '">' + esc(COPY.barButton) + '</a>';
+      var tb = bar.querySelector('.tb-text'); if(tb && barOpen) tb.addEventListener('click', barOpen);
       bar.hidden = false;
       document.body.classList.add('has-today-bar');
     }
@@ -246,7 +251,7 @@
   function detailForEvent(e){
     var m = media(e.title);
     var dp = e.date.split('-'), dt = new Date(Date.UTC(+dp[0], +dp[1] - 1, +dp[2]));
-    var time = e.start ? (e.late ? e.start + ' スタート / ' + e.late + ' レイトレジスト締切' : e.start + '〜') : '';
+    var time = e.start ? (e.late ? e.start + ' スタート / ' + e.late + ' レジクロ' : e.start + '〜') : '';
     var meta = (+dp[1]) + '/' + (+dp[2]) + '(' + WEEK.charAt(dt.getUTCDay()) + ')' + (time ? ' ' + time : '');
     var posters = e.poster ? e.poster.split(/[,、]\s*/).map(function(p){ return 'img/events/' + p; }) : (m && m.posters) || [];
     return { title: shown(e.title), meta: meta, lines: [e.d1, e.d2, e.desc], posters: posters, video: m && m.video };
@@ -298,7 +303,7 @@
         var btn = document.createElement('button'); btn.type = 'button';
         btn.className = 'week-day' + (d.id === todayIso ? ' today' : '');
         var title, sub = '', badge = '';
-        if(e){ title = shown(e.title); sub = [startText(e) ? startText(e) : '', e.late ? '(レイトレ ' + e.late + ')' : ''].filter(Boolean).join(' '); if(isBeginner(e)) badge = COPY.beginnerBadge; }
+        if(e){ title = shown(e.title); sub = [startText(e) ? startText(e) : '', e.late ? '(レジクロ ' + e.late + ')' : ''].filter(Boolean).join(' '); if(isBeginner(e)) badge = COPY.beginnerBadge; }
         else { title = COPY.ringDay; sub = COPY.ringDaySub; }
         if(e && !sub && e.d1) sub = e.d1;
         btn.innerHTML = '<span class="wd-date"><b>' + d.dt.getUTCDate() + '</b><span>' + 'SUN MON TUE WED THU FRI SAT'.split(' ')[d.dt.getUTCDay()] + '</span></span>' +
