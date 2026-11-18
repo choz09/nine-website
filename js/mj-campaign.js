@@ -53,7 +53,11 @@
     for(i = 0; i < CAMPAIGNS.length; i++){ if(CAMPAIGNS[i].from <= t && t <= CAMPAIGNS[i].to) return CAMPAIGNS[i]; }
     return null;
   }
-  function open(c){ if(c && window.NineEvents) window.NineEvents.openDetail(c.detail); }
+  function open(c, tries){
+    if(!c) return;
+    if(window.NineEvents){ window.NineEvents.openDetail(c.detail); return; }
+    if((tries || 0) < 10) setTimeout(function(){ open(c, (tries || 0) + 1); }, 200);   /* 詳細画面の部品が読み込まれるまで待つ */
+  }
 
   function start(){
     var c = current();
