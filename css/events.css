@@ -91,18 +91,19 @@ body.ev-lock{ overflow:hidden; }
 .week-range{ font-family:"Montserrat",sans-serif; font-weight:800; font-size:15px; letter-spacing:.06em; color:var(--gold-2); margin:0 0 20px; }
 .week-list{ max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:10px; text-align:left; }
 .week-day{
-  all:unset; box-sizing:border-box; cursor:pointer; display:flex; align-items:center; gap:16px;
+  all:unset; box-sizing:border-box; cursor:pointer; display:grid; align-items:center; column-gap:16px; row-gap:2px;
+  grid-template-columns:auto minmax(0,1fr) auto; grid-template-areas:"date title badge" "date sub sub";
   background:rgba(255,255,255,.06); border:1px solid rgba(201,161,92,.28); border-radius:14px; padding:14px 18px; color:var(--paper);
 }
 .week-day:focus-visible{ outline:2px solid var(--gold-2); outline-offset:3px; }
 .week-day.today{ border-color:var(--gold-2); background:rgba(201,161,92,.16); }
-.week-day .wd-date{ flex:none; width:3.6em; text-align:center; font-family:"Montserrat",sans-serif; font-weight:900; line-height:1.15; }
+.week-day .wd-date{ grid-area:date; width:3.6em; text-align:center; font-family:"Montserrat",sans-serif; font-weight:900; line-height:1.15; }
 .week-day .wd-date b{ display:block; font-size:24px; }
 .week-day .wd-date span{ font-size:11px; letter-spacing:.1em; color:var(--gold-2); }
-.week-day .wd-body{ min-width:0; display:flex; flex-direction:column; gap:2px; }
-.week-day .wd-title{ font-weight:900; font-size:16px; line-height:1.5; }
-.week-day .wd-sub{ font-size:12.5px; color:var(--ink-soft); line-height:1.7; }
-.week-day .wd-badge{ margin-left:auto; flex:none; font-size:10.5px; font-weight:800; letter-spacing:.06em; background:var(--gold); color:#20180a; border-radius:999px; padding:2px 10px; }
+.week-day .wd-body{ display:contents; }
+.week-day .wd-title{ grid-area:title; font-weight:900; font-size:16px; line-height:1.5; }
+.week-day .wd-sub{ grid-area:sub; font-size:12.5px; color:var(--ink-soft); line-height:1.7; }
+.week-day .wd-badge{ grid-area:badge; justify-self:end; font-size:10.5px; font-weight:800; letter-spacing:.06em; background:var(--gold); color:#20180a; border-radius:999px; padding:2px 10px; white-space:nowrap; }
 .poster-fold{ max-width:760px; margin:26px auto 0; text-align:left; color:var(--ink-soft); }
 .poster-fold summary{ cursor:pointer; font-family:"Montserrat","Noto Sans JP",sans-serif; font-weight:800; font-size:13px; color:var(--gold-2); }
 .poster-fold img{ display:block; width:100%; height:auto; margin-top:14px; border-radius:14px; border:1px solid rgba(201,161,92,.25); }
