@@ -144,3 +144,10 @@ body.ev-lock{ overflow:hidden; }
 .rank-card[data-rank="star"]{ background-image:url(../img/rank/star.jpg?v=1); border-color:#9a8a35; }
 .rank-card[data-rank="mvp"]{ background-image:url(../img/rank/mvp.jpg?v=1); border-color:var(--gold); }
 .rank-card.mvp[data-rank] .cond{ color:var(--gold-2); }
+
+/* ---------- 黒い帯のセクション(ランク) ---------- */
+.ev-sect.dark{ background:var(--ink); color:var(--paper); border-bottom-color:rgba(201,161,92,.28); }
+.ev-sect.dark .eyebrow{ color:var(--gold-2); }
+.ev-sect.dark h2{ color:var(--paper); }
+.ev-sect.dark p.ev-lead, .ev-sect.dark .rank-streak p, .ev-sect.dark .rank-close{ color:var(--paper); }
+.ev-sect.dark .rank-streak ul, .ev-sect.dark .ev-note{ color:var(--ink-soft); }
