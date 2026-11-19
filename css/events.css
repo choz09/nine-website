@@ -132,3 +132,15 @@ body.ev-lock{ overflow:hidden; }
 .today-bar .tb-btns{ flex:none; display:flex; gap:8px; }
 .today-bar .tb-btn-sub{ background:none; border:1px solid var(--gold-2); color:var(--gold-2); padding:8px 14px; }
 @media (max-width:420px){ .today-bar .tb-btn, .today-bar .tb-btn-sub{ padding:9px 11px; font-size:12px; } .today-bar .tb-btn-sub{ padding:8px 10px; } }
+
+/* ---------- ランクのカード: アプリのカード背景(盾の絵)を背景に敷く ---------- */
+.rank-card[data-rank]{ position:relative; overflow:hidden; color:#fff; border:1px solid rgba(255,255,255,.18); min-height:136px; justify-content:center;
+  background-color:var(--ink); background-repeat:no-repeat; background-size:150% auto; background-position:left center; }
+.rank-card[data-rank] .cond{ color:rgba(255,255,255,.78); }
+.rank-card[data-rank] b, .rank-card[data-rank] p{ text-shadow:0 1px 6px rgba(0,0,0,.55); }
+.rank-card[data-rank] > *{ position:relative; max-width:82%; }
+.rank-card[data-rank="rookie"]{ background-image:url(../img/rank/rookie.jpg?v=1); border-color:#3a78c2; }
+.rank-card[data-rank="regular"]{ background-image:url(../img/rank/regular.jpg?v=1); border-color:#2e9a4f; }
+.rank-card[data-rank="star"]{ background-image:url(../img/rank/star.jpg?v=1); border-color:#9a8a35; }
+.rank-card[data-rank="mvp"]{ background-image:url(../img/rank/mvp.jpg?v=1); border-color:var(--gold); }
+.rank-card.mvp[data-rank] .cond{ color:var(--gold-2); }

@@ -341,7 +341,7 @@
  "@context": "https://schema.org"
 }
 </script>
-<link rel="stylesheet" href="css/events.css?v=20261120">
+<link rel="stylesheet" href="css/events.css?v=20261120b">
 </head>
 <body>
 
@@ -483,10 +483,10 @@
     <h2>来店が、ランクになる。</h2>
     <p class="ev-lead">月の来店回数で、ランクが決まります。<br>獲得した翌月の1か月間、アプリのカードに表示。<br>バッジのほか、ポイントのプレゼントもあります。</p>
     <div class="rank-grid">
-      <div class="rank-card"><b>ROOKIE</b><span class="cond">月1〜2回</span><p>まずは、ここから。</p></div>
-      <div class="rank-card"><b>REGULAR</b><span class="cond">月3〜6回</span><p>すっかり、おなじみ。</p></div>
-      <div class="rank-card"><b>STAR</b><span class="cond">月7回以上</span><p>月7回以上。店の主役。</p></div>
-      <div class="rank-card mvp"><b>MVP</b><span class="cond">STARの中から毎月1人</span><p>STARの中から、毎月ただ1人。</p></div>
+      <div class="rank-card" data-rank="rookie"><b>ROOKIE</b><span class="cond">月1〜2回</span><p>まずは、ここから。</p></div>
+      <div class="rank-card" data-rank="regular"><b>REGULAR</b><span class="cond">月3〜6回</span><p>すっかり、おなじみ。</p></div>
+      <div class="rank-card" data-rank="star"><b>STAR</b><span class="cond">月7回以上</span><p>月7回以上。店の主役。</p></div>
+      <div class="rank-card mvp" data-rank="mvp"><b>MVP</b><span class="cond">STARの中から毎月1人</span><p>STARの中から、毎月ただ1人。</p></div>
     </div>
     <div class="rank-streak">
       <p>続けて通うと、特別なバッジも。</p>
@@ -603,6 +603,6 @@
 })();
 </script>
 <div class="today-bar" id="today-bar" hidden></div>
-<script src="js/events.js?v=20261120" defer></script>
+<script src="js/events.js?v=20261120b" defer></script>
 </body>
 </html>
