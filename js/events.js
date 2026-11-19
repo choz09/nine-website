@@ -42,7 +42,7 @@
     noCash: 'チップの現金化・景品交換は一切ありません。',
     cards: {
       'WEDNESDAY RING GAME': '通常より、気軽に座れる一卓。',
-      'THURSDAY TOURNAMENT': '19:50までの着席で、1回目の参加は無料。',
+      'THURSDAY TOURNAMENT': '19:50までの着席で、初回は無料。',
       'NINE PARTY QUEST': 'みんなで協力して、9つのミッションに挑戦。',
       'WEEKLY MISSION': 'ミッションをクリアして、チケットを集めよう。'
     },
