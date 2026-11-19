@@ -132,7 +132,7 @@
     for(i = 1; i < rows.length; i++){
       r = rows[i];
       if(!r[1]) continue;
-      out.push({ order: +r[0] || i, title: r[1], kind: r[2] || '', day: r[3] || '', time: r[4] || '', price: r[5] || '', desc: r[6] || '', beginner: /^(true|1|はい)$/i.test(String(r[7]).trim()), poster: r[8] || '', show: truthy(r[9]) });
+      out.push({ order: +r[0] || i, title: r[1], kind: r[2] || '', day: r[3] || '', time: r[4] || '', price: r[5] || '', desc: r[6] || '', beginner: /^(true|1|はい)$/i.test(String(r[7]).trim()), poster: r[8] || '', show: truthy(r[9]), line: r[10] || '', detail: r[11] || '', items: r[12] || '', notes: r[13] || '', video: r[14] || '' });
     }
     out.sort(function(a, b){ return a.order - b.order; });
     return out;
@@ -243,11 +243,16 @@
     if(el.showModal) el.showModal(); else el.setAttribute('open', '');
     document.body.classList.add('ev-lock');
   }
+  function splitLines(t){ return String(t || '').split(/\r?\n/).map(function(x){ return x.trim(); }).filter(Boolean); }
   function detailForFixed(f){
-    var m = media(f.title), lines = COPY.details[key(f.title)] || [f.desc];
-    var meta = fixedMeta(f);
+    /* シートの「詳細本文」「項目一覧」「注意書き」「動画」があればそれを使い、空なら上のCOPY・MEDIAの控えを使う */
+    var k = key(f.title), m = media(f.title);
+    var lines = f.detail ? splitLines(f.detail) : (COPY.details[k] || [f.desc]);
+    var items = f.items ? splitLines(f.items).map(function(l){ var p = l.split(/[｜|]/); return [p[0].trim(), p.slice(1).join('｜').trim()]; }) : COPY.missions[k];
+    var notes = f.notes ? splitLines(f.notes) : null;
+    var video = f.video ? { src: 'img/events/' + f.video, poster: 'img/events/' + f.video.replace(/\.mp4$/i, '-poster.jpg') } : (m && m.video);
     var posters = f.poster ? f.poster.split(/[,、]\s*/).map(function(p){ return 'img/events/' + p; }) : (m && m.posters) || [];
-    return { title: shown(f.title), meta: meta, lines: lines, missions: COPY.missions[key(f.title)], missionNote: COPY.missions[key(f.title)] ? COPY.missionNote : '', video: m && m.video, posters: posters, noCash: key(f.title) === 'WEEKLY MISSION' };
+    return { title: shown(f.title), meta: fixedMeta(f), lines: lines, missions: items, missionNote: (!f.items && COPY.missions[k]) ? COPY.missionNote : '', notes: notes || [], video: video, posters: posters, noCash: !notes && k === 'WEEKLY MISSION' };
   }
   function detailForEvent(e){
     var m = media(e.title);
@@ -270,7 +275,7 @@
   function cardHtml(f, i){
     return '<button type="button" class="ev-card" data-i="' + i + '"><span class="tag">' + esc(f.kind || '') + '</span><h3>' + esc(shown(f.title)) + '</h3>' +
       (fixedMeta(f) ? '<p class="meta">' + esc(fixedMeta(f)) + '</p>' : '') +
-      '<p class="line">' + esc(COPY.cards[key(f.title)] || f.desc) + '</p><span class="more">' + esc(COPY.more) + ' →</span></button>';
+      '<p class="line">' + esc(f.line || COPY.cards[key(f.title)] || f.desc) + '</p><span class="more">' + esc(COPY.more) + ' →</span></button>';
   }
   function renderCards(host, list){
     if(!host) return;

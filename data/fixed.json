@@ -9,7 +9,12 @@
   "desc": "ブラインドは25/25（半分）。初心者でも安心、アドバイスもあり。",
   "beginner": true,
   "poster": "",
-  "show": true
+  "show": true,
+  "line": "通常より、気軽に座れる一卓。",
+  "detail": "",
+  "items": "",
+  "notes": "",
+  "video": ""
  },
  {
   "order": 2,
@@ -21,7 +26,12 @@
   "desc": "19:50までの着席で1stエントリー無料。初心者でも安心、アドバイスもあり。",
   "beginner": true,
   "poster": "",
-  "show": true
+  "show": true,
+  "line": "19:50までの着席で、1回目の参加は無料。",
+  "detail": "",
+  "items": "",
+  "notes": "",
+  "video": ""
  },
  {
   "order": 3,
@@ -30,10 +40,15 @@
   "day": "毎日",
   "time": "",
   "price": "",
-  "desc": "(要入力：内容・ミッションの案内)",
+  "desc": "みんなで協力して、9つのミッションに挑戦。クリアすると、特別な特典があります。詳細は店内で。",
   "beginner": false,
-  "poster": "",
-  "show": true
+  "poster": "party-quest-1.jpg,party-quest-2.jpg",
+  "show": true,
+  "line": "みんなで協力して、9つのミッションに挑戦。",
+  "detail": "11/1〜11/30の、リングゲーム月間イベントです。\nみんなで協力して、9つのミッションに挑戦。\nクリアすると、特別な特典があります。詳細は店内で。",
+  "items": "",
+  "notes": "",
+  "video": ""
  },
  {
   "order": 4,
@@ -42,9 +57,14 @@
   "day": "毎日",
   "time": "",
   "price": "",
-  "desc": "♠NORMAL ♥HARD ♦SPECIAL ♣SECRET の4種類。(要入力：案内文)",
+  "desc": "ミッションをクリアしてチケットを集め、チケット3枚でカードパックを開封できます。",
   "beginner": false,
-  "poster": "",
-  "show": true
+  "poster": "weekly-mission.jpg",
+  "show": true,
+  "line": "ミッションをクリアして、チケットを集めよう。",
+  "detail": "ミッションをクリアして、チケットを集めよう。\nチケット3枚で、店内iPadのカードパックを1回開封できます。\n成績は関係ありません。",
+  "items": "NORMAL｜週2日来店で、チケット1枚\nHARD｜週2日来店+19:30までの着席で、さらに1枚\nSPECIAL｜毎週指定のイベントに参加で、1枚\nSECRET｜店内モニターで確認して、1枚",
+  "notes": "リングまたはトーナメントに着席した日を、1日と数えます。\nチップの現金化・景品交換は一切ありません。",
+  "video": "weekly-mission.mp4"
  }
 ]
